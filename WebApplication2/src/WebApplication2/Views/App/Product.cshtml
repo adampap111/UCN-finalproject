@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewBag.Title = "Product";
+}
+@section Scripts {
+    <script type="text/javascript" src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-route/angular-route.min.js"></script>
+    <script src="~/js/app-productList.js"></script>
+    <script src="~/js/productListController.js"></script>
+
+
+}
+<div data>
+    <div class="wrapper">
+        <div data-ng-app="app-productList">
+            <div ng-view></div>
+        </div>
+    </div>
+</div>

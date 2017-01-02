@@ -1,0 +1,60 @@
+﻿@model Heinbo.ViewModels.UserViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@section Scripts {
+    <script src="~/js/plugins/style-switcher.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="~/css/pages/page_log_reg_v2.css">
+}
+
+
+<div class="container">
+    <!--Reg Block-->
+    <div class="reg-block" style="border-color:#4765A0">
+        <form method="post" novalidate>
+            <div class="reg-block-header" asp-validation-summary="ModelOnly">
+                <h2>Bejelentezés</h2>
+                <ul class="social-icons text-center">
+                    <li><a class="rounded-x social_facebook" data-original-title="Facebook" href="#"></a></li>
+                    <li><a class="rounded-x social_twitter" data-original-title="Twitter" href="#"></a></li>
+                    <li><a class="rounded-x social_googleplus" data-original-title="Google Plus" href="#"></a></li>
+                    <li><a class="rounded-x social_linkedin" data-original-title="Linkedin" href="#"></a></li>
+                </ul>
+                <p >Még nem regisztráltál? <a class="color-green" href="page_registration1.html">Regisztráció</a> itt.</p>
+            </div>
+            <span asp-validation-for="Email" class="text-muted"></span>
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input type="text" asp-for="Email" class="form-control" placeholder="Email">
+            </div>
+            <span asp-validation-for="Password" class="text-muted"></span>
+            <div class="input-group margin-bottom-20">
+
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+            </div>
+            <hr>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">
+                    Maradjak bejelentezve.
+                </label>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <button type="submit" class="btn btn-u btn-block bg-color-dark-blue">Bejelentezés</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--End Reg Block-->
+</div><!--/container-->

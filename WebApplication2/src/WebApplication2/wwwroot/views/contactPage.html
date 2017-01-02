@@ -1,0 +1,54 @@
+﻿<div class="container">
+    <div class="reg-block" style="border-color:#4765A0">
+        <form novalidate name="contactByMail" ng-submit="vm.sendMail()">
+            <div class="reg-block-header">
+                <h2>Kapcsolat</h2>
+                <div ng-show="vm.isBusy" class="text-center ng-cloak color-dark-blue" style="font-size:16px"> <i class="fa fa-spinner fa-spin" style="font-size:22px"></i>Küldés...</div>
+                <div class="panel bg-color-dark-blue ng-cloak" style="padding:7px;border-radius:10px;" ng-show="vm.sentNotifier">
+                    Az email el lett küldve.
+                </div>
+                <div class="panel bg-color-red ng-cloak" style="padding:7px;border-radius:10px;" ng-show="vm.errorNotifier">
+                    Az email nem sikerült elküldeni.
+                </div>
+                <div class="panel">
+                    <div>
+                        <span ng-show="contactByMail.subject.$error.required" class="text-warning">Tárgy kötelező.</span>
+                    </div>
+                    <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : contactByMail.subject.$invalid && !contactByMail.subject.$pristine }">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <input type="text" name="subject" class="form-control" placeholder="Tárgy" ng-model="vm.responseData.subject" required>
+                    </div>
+                    <div>
+                        <span ng-show="contactByMail.name.$error.required" class="text-warning">Név kötelező.</span>
+                    </div>
+                    <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : contactByMail.name.$invalid && !contactByMail.name.$pristine }">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <input type="text" name="name" class="form-control" placeholder="Küldő neve" ng-model="vm.responseData.name" required>
+                    </div>
+                    <div>
+                        <span ng-show="contactByMail.email.$error.required" class="text-warning">Email cím kötelező.</span>
+                        <span ng-show="contactByMail.email.$invalid && !contactByMail.email.$pristine && !contactByMail.email.$error.required" a class="text-warning">Az email formátuma: példa@példa.com</span>
+                    </div>
+                    <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : contactByMail.email.$invalid && !contactByMail.email.$pristine }">
+                        <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                        <input type="email" name="email" class="form-control" placeholder="Email" ng-model="vm.responseData.email" required>
+                    </div>
+                    <div>
+                        <span ng-show="contactByMail.message.$error.required" class="text-warning">Email cím kötelező.</span>
+                        <span ng-show="contactByMail.message.$invalid" a class="text-warning">A törzsszöveg minimum 10 karakterből áll.</span>
+                    </div>
+                    <div class="input-group margin-bottom-20" style="width:100%" ng-class="{ 'has-error' : contactByMail.message.$invalid && !contactByMail.message.$pristine }">
+                        <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                        <textarea type="text" name="message" style="width:100%" rows="6" class="form-control" placeholder="Törzsszöveg"  ng-model="vm.responseData.message" required ng-minlength="10"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <button type="submit" class="btn btn-u btn-block bg-color-dark-blue" ng-disabled="contactByMail.$invalid">Küldés</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewBag.Title = "Product Info";
+}
+@section Scripts {
+    <script src="~/plugins/master-slider/masterslider/masterslider.min.js"></script>
+    <script src="~/plugins/master-slider/masterslider/style/masterslider.css"></script>
+    <script type="text/javascript" src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-route/angular-route.min.js"></script>
+    <script src="~/js/app-productInfo.js"></script>
+    <script src="~/js/productInfoController.js"></script>
+
+
+
+}
+
+<div data-ng-app="app-productInfo">
+    <div ng-view></div>
+</div>

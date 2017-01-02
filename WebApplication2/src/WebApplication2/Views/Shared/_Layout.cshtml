@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <title>Heinbo hegesztés</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,800&amp;subset=cyrillic,latin'>
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="~/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/shop.style.css" />
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="~/css/headers/header-v5.css">
+    <link rel="stylesheet" href="~/css/footers/footer-v4.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="~/plugins/animate.css">
+    <link rel="stylesheet" href="~/plugins/line-icons/line-icons.css">
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="~/plugins/owl-carousel/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="~/plugins/revolution-slider/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="~/plugins/noUiSlider/jquery.nouislider.min.css">
+
+
+    <!-- Style Switcher -->
+    <link rel="stylesheet" href="~/css/plugins/style-switcher.css">
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="~/css/theme-colors/dark-blue.css" id="style_color">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="~/css/custom.css">
+    <style type="text/css">
+        /* number field spinner remover */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="header-fixed">
+    <div class="wrapper">
+        <!--=== Header v5 ===-->
+        <div class="header-v5 header-static">
+            <!-- Topbar v3 -->
+            <div class="topbar-v3">
+                <div class="search-open">
+                    <div class="container">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="search-open"><i class="icon-close"></i></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!-- Topbar Navigation -->
+                            <ul class="left-topbar">
+                                <li>
+                                    <a>Nyelv (Magyar)</a>
+                                    <ul class="language">
+                                        <li class="active">
+                                            <a href="#">Magyar (HUN)<i class="fa fa-check"></i></a>
+                                        </li>
+                                        <li><a href="#">English (ENG)</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul><!--/end left-topbar-->
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-inline right-topbar pull-right">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a asp-controller="App" asp-action="Profile">@User.Identity.Name</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Auth" asp-action="Logout">Kijelentkezés</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-controller="Auth" asp-action="Login">Bejelentkezés</a> |
+                                        <a asp-controller="App" asp-action="Register">Regisztráció</a>
+                                    </li>
+                                }
+
+                                
+                            </ul>
+
+
+
+                        </div>
+                    </div>
+                </div><!--/container-->
+            </div>
+            <!-- End Topbar v3 -->
+            <!-- Navbar -->
+            <div class="navbar navbar-default mega-menu" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <a class="navbar-brand" asp-controller="App" asp-action="Index" style="padding-top:25px">
+                            <img id="logo-header" src="~/img/logo-heinbo-black-120x37.png" alt="Logo" class="hidden-xs">
+                            <img id="logo-header" src="~/img/logo-heinbo-black-90x28.png" alt="Logo" class="hidden-md hidden-lg hidden-sm">
+                        </a>
+                    </div>
+                    <!-- Shopping Cart -->
+                    <div class="shop-badge badge-icons pull-right">
+                        @await Component.InvokeAsync("CartBadge")
+                    </div>
+                    <!-- End Shopping Cart -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-responsive-collapse">
+                        <!-- Nav Menu -->
+                        <ul class="nav navbar-nav">
+                            <!-- Hozaganyagok -->
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
+                                    Hozaganyagok
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-submenu">
+                                        <a>AWI pálcák</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-controller="App" asp-action="Product" asp-route-id="GOLDAWI">GOLD AWI pálca</a></li>
+                                            <li><a asp-controller="App" asp-action="Product" asp-route-id="MOSTAWI">MOST AWI pálca</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a>Hegesztőhuzalok</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-controller="App" asp-action="Product" asp-route-id="GOLDSG2SG3">GOLD SG2, SG3</a></li>
+                                            <li><a asp-controller="App" asp-action="Product" asp-route-id="GOLDaluminium">GOLD alumíniumhoz</a></li>
+                                            <li><a asp-controller="App" asp-action="Product" asp-route-id="MOST30083016">MOST 308,316</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a asp-controller="App" asp-action="Product" asp-route-id="Elektrodak">Elektródák</a></li>
+                                </ul>
+                            </li>
+                            <!-- Hozaganyagok -->
+                            <!-- Gépek -->
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="1000">
+                                    Gépek
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-controller="App" asp-action="Product" asp-route-id="MostHegeszto">Most hegesztőgépek</a></li>
+                                    <li><a asp-controller="App" asp-action="Product" asp-route-id="GullcoHegeszto">Gullco hegesztőgépek</a></li>
+                                    <li><a asp-controller="App" asp-action="Product" asp-route-id="ThermadyneHegeszto">Thermadyne hegesztőgépek</a></li>
+                                </ul>
+                            </li>
+                            <!-- Gépek -->
+                            <!-- Munkavédelem -->
+                            <li class="dropdown">
+
+                                <a href="" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
+                                    Munkavédelem
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-controller="App" asp-action="Product" asp-route-id="Vedokesztyuk">Védőkesztyűk</a></li>
+                                    <li><a asp-controller="App" asp-action="Product" asp-route-id="AutomataHegesztopajzs">Automata hegyesztőpajzsok</a></li>
+                                </ul>
+                            </li>
+                            <!-- Munkavédelem -->
+                            <!--   Vágó és Csiszolóanyagok -->
+                            <li class="dropdown">
+
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
+                                    Vágó és csiszolóanyagok
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-controller="App" asp-action="Product" asp-route-id="MOSTVagokorong">Most vágókorongok</a></li>
+
+                                </ul>
+                            </li>
+                            <!--   Vágó és Csiszolóanyagok -->
+                            <!-- Turbómarók -->
+                            <li><a asp-controller="App" asp-action="Product" asp-route-id="Turbomarok">Turbómarók</a></li>
+                            <!-- Turbómarók -->
+                        </ul>
+                        <!-- End Nav Menu -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Navbar -->
+        </div>
+        <!--=== End Header v5 ===-->
+
+
+        <div>
+
+            @RenderBody()
+
+        </div>
+
+
+        <!--=== Shop Suvbscribe ===-->
+        <div class="shop-subscribe">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 md-margin-bottom-20">
+                        <h2>Íratkozz fel<strong> Hírlevelünkre</strong></h2>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Add meg emailcímed">
+                            <span class="input-group-btn">
+                                <button class="btn" type="button"><i class="fa fa-envelope-o"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/end container-->
+        </div>
+        <!--=== End Shop Suvbscribe ===-->
+        <!--=== Footer v4 ===-->
+        <div class="footer-v4">
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <!-- About -->
+                        <div class="col-md-4 md-margin-bottom-40" style="padding-top:30px">
+                            <a href="index.html"><img class="footer-logo" src="~/img/logo-heinbo-white-250x77.png" alt=""></a>
+                        </div>
+                        <div class="col-md-4 md-margin-bottom-40">
+                            <h2 style="color:white">Heinbo hegesztéstechnika</h2>
+                            <ul class="list-unstyled simple-list margin-bottom-20">
+                                <li><a href="#">Hozaganyagok</a></li>
+                                <li><a>Hegesztőhuzalok</a></li>
+                                <li><a href="">Most vágókorongok</a></li>
+                                <li><a href="">Turbómarók</a></li>
+                                <li><a href="">Védőkesztyűk</a></li>
+                                <li><a href="">Automata hegyesztőpajzsok</a></li>
+                                <li><a href="">Gépek</a></li>
+                            </ul>
+                        </div>
+                        <!-- End About -->
+                        <!-- Simple List -->
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-6">
+                                    <h2 style="color:white">Elérhetőségeink</h2>
+                                    <ul class="list-unstyled address-list margin-bottom-20">
+                                        <li><i class="fa fa-angle-right"></i>5081 Szajol, Arany János út 5/D</li>
+                                        <li><i class="fa fa-angle-right"></i>Telefon: 70/363-18-99</li>
+                                        <li><i class="fa fa-angle-right"></i>Fax: 1234-4567</li>
+                                        <li><i class="fa fa-angle-right"></i>Email: heinbo@heinbo.hu</li>
+                                    </ul>
+                                    <ul class="list-inline shop-social">
+                                        <li><a href=""><i class="fb rounded-md fa fa-facebook"></i></a></li>
+                                        <li><a href=""><i class="tw rounded-md fa fa-twitter"></i></a></li>
+                                        <li><a href=""><i class="gp rounded-md fa fa-google-plus"></i></a></li>
+                                        <li><a href=""><i class="yt rounded-md fa fa-youtube"></i></a></li>
+                                    </ul> 
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- End Simple List -->
+                    </div><!--/end row-->
+                </div><!--/end continer-->
+            </div><!--/footer-->
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>
+                                2016 &copy; Heinbo.
+
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div><!--/copyright-->
+        </div>
+        <!--=== End Footer v4 ===-->
+    </div><!--/wrapper-->
+    <!-- JS Global Compulsory -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script src="~/plugins/jquery/jquery-migrate.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- JS Implementing Plugins -->
+    <script src="~/plugins/back-to-top.js"></script>
+    <script src="~/plugins/smoothScroll.js"></script>
+    <script src="~/plugins/jquery.parallax.js"></script>
+    <script src="~/plugins/noUiSlider/jquery.nouislider.all.min.js"></script>
+    <script src="~/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+    <script src="~/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- JS Customization -->
+    <script src="~/js/custom.js"></script>
+    <!-- JS Page Level -->
+    <script src="~/js/shop.app.js"></script>
+    <script src="~/js/plugins/owl-carousel.js"></script>
+    <script src="~/js/plugins/revolution-slider.js"></script>
+    <script src="~/js/plugins/style-switcher.js"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            App.initParallaxBg();
+            OwlCarousel.initOwlCarousel();
+            RevolutionSlider.initRSfullWidth();
+            StyleSwitcher.initStyleSwitcher();
+        });
+    </script>
+    <!--[if lt IE 9]>
+        <script src="~/plugins/respond.js"></script>
+        <script src="~/plugins/html5shiv.js"></script>
+        <script src="~/js/plugins/placeholder-IE-fixes.js"></script>
+        <![endif]-->
+    @RenderSection("scripts", false)
+</body>
+</html>

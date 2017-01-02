@@ -1,0 +1,80 @@
+﻿<div class="container">
+    <!--Reg Block-->
+    <div class="reg-block" style="border-color:#4765A0">
+        
+        <form novalidate name="updateUser" ng-submit="vm.updateUser()">
+            <div class="reg-block-header">
+                <h2>Profil</h2>
+            </div>
+            <div class="panel bg-color-dark-blue ng-cloak" style="padding:7px;border-radius:10px;" ng-show="vm.updatedNotifier">
+                A profil módosítva lett.
+            </div>
+            <div class="panel bg-color-red ng-cloak" style="padding:7px;border-radius:10px;" ng-show="vm.errorNotifier">
+                A profilt nem sikerült módosítani.
+            </div>
+            <div class="panel">
+                <div>
+                    <span ng-show="updateUser.firstName.$error.required" class="text-warning">Keresztnév kötelező.</span>
+                </div>
+                <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : updateUser.firstName.$invalid && !updateUser.firstName.$pristine }">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="text" name="firstName" class="form-control" placeholder="Keresztnév" ng-model="vm.responseData.firstName" required>
+                </div>
+                <div>
+                    <span ng-show="updateUser.lastName.$error.required" class="text-warning">Vezetéknév kötelező.</span>
+                </div>
+                <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : updateUser.lastName.$invalid && !updateUser.lastName.$pristine }">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="text" name="lastName" class="form-control" placeholder="Vezetéknév" ng-model="vm.responseData.lastName" required>
+                </div>
+            </div>
+            <div class="panel">
+                <div>
+                    <span ng-show="updateUser.email.$error.required" class="text-warning">Email cím kötelező.</span>
+                    <span ng-show="updateUser.email.$invalid && !updateUser.email.$pristine && !updateUser.email.$error.required" a class="text-warning">Az email formátuma: példa@példa.com</span>
+                </div>
+                <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : updateUser.email.$invalid && !updateUser.email.$pristine }">
+                    <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                    <input type="email" name="email" class="form-control" placeholder="Email" ng-model="vm.responseData.email" required>
+                </div>
+                <div>
+                    <span ng-show="updateUser.phone.$error.required" class="text-warning">Telefonszám kötelező.</span>
+                    <span ng-show="updateUser.phone.$invalid && !updateUser.phone.$pristine && !updateUser.phone.$error.required" a class="text-warning">Nem valós telefonszám.</span>
+                </div>
+                <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : updateUser.phone.$invalid && !updateUser.phone.$pristine }">
+                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                    <input type="text" name="phone" class="form-control" placeholder="Telefonszám" ng-model="vm.responseData.phoneNumber" required ng-minlength="8" ng-maxlength="14" ng-pattern="/^[0-9]+$/">
+                </div>
+            </div>
+            <div class="panel">
+                <div>
+                    <span ng-show="updateUser.street.$error.required" class="text-warning">Utca kötelező.</span>
+                    <span ng-show="updateUser.streetNr.$error.required" class="text-warning">Házszám kötelező.</span>
+                </div>
+                <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : updateUser.street.$invalid && !updateUser.street.$pristine || updateUser.streetNr.$invalid && !updateUser.streetNr.$pristine}">
+                    <span class="input-group-addon"><i class="fa fa-inbox"></i></span>
+                    <input type="text" name="street" class="form-control" placeholder="Utca" style="margin-right:60px;" ng-model="vm.responseData.street" required>
+                    <span class="input-group-addon"><i class="fa fa-gavel"></i></span>
+                    <input type="number" name="streetNr" class="form-control" placeholder="h.sz." ng-model="vm.responseData.streetNumber" required>
+                </div>
+                <div>
+                    <span ng-show="updateUser.city.$error.required" class="text-warning">Város kötelező.</span>
+                    <span ng-show="updateUser.zip.$error.required" class="text-warning">Irányítószám kötelező.</span>
+                </div>
+                <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : updateUser.city.$invalid && !updateUser.city.$pristine || updateUser.zip.$invalid && !updateUser.zip.$pristine}">
+                    <span class="input-group-addon"><i class="fa fa-gavel"></i></span>
+                    <input type="text" name="city" class="form-control" placeholder="Város" style="margin-right:60px;" ng-model="vm.responseData.city" required>
+                    <span class="input-group-addon"><i class="fa fa-gavel"></i></span>
+                    <input type="number" name="zip" class="form-control" placeholder="irsz." ng-model="vm.responseData.zip" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <button type="submit" class="btn btn-u btn-block bg-color-dark-blue" ng-disabled="updateUser.$invalid">Módosítás</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--End Reg Block-->
+</div>

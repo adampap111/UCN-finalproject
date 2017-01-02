@@ -1,0 +1,24 @@
+@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-route/angular-route.min.js"></script>
+    <script src="~/js/app-contactPage.js"></script>
+    <script src="~/js/contactPageController.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="~/css/pages/page_log_reg_v2.css">
+}
+
+<div data-ng-app="app-contactPage">
+    <div ng-view></div>
+
+</div>

@@ -1,0 +1,46 @@
+﻿<div ng-controller="productController">
+    <div class="container content-md">
+        <div class="heading heading-v1 margin-bottom-20">
+            <h2>Népszerű termékeink</h2>
+            <p>A HEINBO Hegesztéstechnikai Kft. kiemelten forgalmazza a lengyelországi RYWAL-RHC cégcsoport kiváló minőségű termékeit.</p>
+        </div>
+        <!--=== Illustration v2 ===-->
+        <div class="illustration-v2 margin-bottom-60">
+            
+
+            <div ng-show="vm.isBusy" class="text-center"> <i class="fa fa-spinner fa-spin"></i>Töltés...</div>
+            <div>
+                <ul class="list-inline owl-slider" style="text-align:center;">
+                    <li class="item" style="display:inline-block;" ng-repeat="product in products | limitTo: 6">
+                        <div class="product-img">
+                            <a ng-href="App/ProductInfo/{{product.productName}}"><img class="img-width-300 img-responsive" ng-src="../img/blog/{{product.productName}}.jpg" alt=""></a>
+                            <a class="product-review" ng-href="App/ProductInfo/{{product.productName}}">Termékinfó</a>
+                            <button type='button' class="add-to-cart" ng-click="vm.addToCart($index)"><i class="fa fa-shopping-cart">Kosárba rakom</i></button>
+                            <div class="shop-rgba-red rgba-banner">Akcios</div>
+                        </div>
+                        <div class="product-description product-description-brd">
+                            <div class="overflow-h margin-bottom-5">
+                                <div class="pull-left">
+                                    <h4 class="title-price"><a ng-href="#/product/{{product.productName}}"></a></h4>
+                                    <span class="gender text-uppercase">{{product.ProductName}}</span>
+                                    <span class="gender">{{product.Category}}</span>
+                                </div>
+                                <div class="overflow-h margin-bottom-5">
+                                    <div class="pull-left" style="text-align:left">
+                                        <h4 class="title-price"><a ng-href="App/ProductInfo/{{product.productName}}">{{product.productName}}</a></h4>
+
+                                        <span class="gender">{{product.category}}</span>
+                                    </div>
+                                    <div class="product-price">
+                                        <span class="title-price">{{product.price}} Ft</span>
+                                        <span class="title-price line-through">{{product.price*1.5}} Ft</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,367 @@
+﻿@model Heinbo.ViewModels.ProductViewModel
+
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-route/angular-route.min.js"></script>
+    <script src="~/js/app-product.js"></script>
+    <script src="~/js/productController.js"></script>
+}
+
+<div class="tp-banner-container">
+    <div class="tp-banner">
+        <ul>
+            <!-- SLIDE -->
+            <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 1">
+                <!-- MAIN IMAGE -->
+                <img src="../img/hegeszt1.jpg" alt="darkblurbg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                <div class="tp-caption revolution-ch1 sft start"
+                     data-x="center"
+                     data-hoffset="0"
+                     data-y="100"
+                     data-speed="1500"
+                     data-start="500"
+                     data-easing="Back.easeInOut"
+                     data-endeasing="Power1.easeIn"
+                     data-endspeed="300">
+                    Új <br>
+                    <strong>Termékek</strong><br>
+                    itt!
+                </div>
+                <!-- LAYER -->
+                <div class="tp-caption sft"
+                     data-x="center"
+                     data-hoffset="0"
+                     data-y="380"
+                     data-speed="1600"
+                     data-start="1800"
+                     data-easing="Power4.easeOut"
+                     data-endspeed="300"
+                     data-endeasing="Power1.easeIn"
+                     data-captionhidden="off"
+                     style="z-index: 6">
+                    <a href="#" class="btn btn-brd btn-brd-hover btn-u-light">Megtekint</a>
+                </div>
+            </li>
+            <!--=== End Slider ===-->
+            <!-- END SLIDE -->
+            <!-- SLIDE -->
+            <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 2">
+                <!-- MAIN IMAGE -->
+                <img src="../img/hegeszt5.jpg" alt="darkblurbg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                <div class="tp-caption revolution-ch3 sft start"
+                     data-x="center"
+                     data-hoffset="0"
+                     data-y="140"
+                     data-speed="1500"
+                     data-start="500"
+                     data-easing="Back.easeInOut"
+                     data-endeasing="Power1.easeIn"
+                     data-endspeed="300">
+                    Akciós <strong>termékek</strong> készletről
+                </div>
+                <!-- LAYER -->
+                <div class="tp-caption revolution-ch4 sft"
+                     data-x="center"
+                     data-hoffset="-14"
+                     data-y="210"
+                     data-speed="1400"
+                     data-start="2000"
+                     data-easing="Power4.easeOut"
+                     data-endspeed="300"
+                     data-endeasing="Power1.easeIn"
+                     data-captionhidden="off"
+                     style="z-index: 6">
+                    Marketing szöveg blabla.<br>
+                    kiegészítő szöveg láláá
+                </div>
+                <!-- LAYER -->
+                <div class="tp-caption sft"
+                     data-x="center"
+                     data-hoffset="0"
+                     data-y="300"
+                     data-speed="1600"
+                     data-start="1800"
+                     data-easing="Power4.easeOut"
+                     data-endspeed="300"
+                     data-endeasing="Power1.easeIn"
+                     data-captionhidden="off"
+                     style="z-index: 6">
+                    <a href="#" class="btn btn-u btn-brd btn-brd-hover btn-u-light">Megtekint</a>
+                </div>
+            </li>
+            <!-- END SLIDE -->
+            <!-- SLIDE -->
+            <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 3">
+                <!-- MAIN IMAGE -->
+                <img src="../img/hegeszt3.jpg" alt="darkblurbg" data-bgfit="cover" data-bgposition="right top" data-bgrepeat="no-repeat">
+                <div class="tp-caption revolution-ch3 sft start"
+                     data-x="right"
+                     data-hoffset="5"
+                     data-y="130"
+                     data-speed="1500"
+                     data-start="500"
+                     data-easing="Back.easeInOut"
+                     data-endeasing="Power1.easeIn"
+                     data-endspeed="300">
+                    <strong>Hegesztőgépek</strong> Védőpajzsok.
+                </div>
+                <!-- LAYER -->
+                <div class="tp-caption revolution-ch4 sft"
+                     data-x="right"
+                     data-hoffset="0"
+                     data-y="210"
+                     data-speed="1400"
+                     data-start="2000"
+                     data-easing="Power4.easeOut"
+                     data-endspeed="300"
+                     data-endeasing="Power1.easeIn"
+                     data-captionhidden="off"
+                     style="z-index: 6">
+                    Készleten<br>
+                    Ingyenes kiszállítás.
+                </div>
+                <!-- LAYER -->
+                <div class="tp-caption sft"
+                     data-x="right"
+                     data-hoffset="0"
+                     data-y="300"
+                     data-speed="1600"
+                     data-start="2800"
+                     data-easing="Power4.easeOut"
+                     data-endspeed="300"
+                     data-endeasing="Power1.easeIn"
+                     data-captionhidden="off"
+                     style="z-index: 6">
+                    <a href="#" class="btn btn-u btn-brd btn-brd-hover btn-u-light">Megtekint</a>
+                </div>
+            </li>
+            <!-- END SLIDE -->
+            <!-- SLIDE -->
+            <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 4">
+                <!-- MAIN IMAGE -->
+                <img src="../img/hegeszt2.jpg" alt="darkblurbg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                <div class="tp-caption revolution-ch1 sft start"
+                     data-x="center"
+                     data-hoffset="0"
+                     data-y="100"
+                     data-speed="1500"
+                     data-start="500"
+                     data-easing="Back.easeInOut"
+                     data-endeasing="Power1.easeIn"
+                     data-endspeed="300">
+                    Ingyenes kiszállítás.
+                </div>
+                <!-- LAYER -->
+                <div class="tp-caption revolution-ch2 sft"
+                     data-x="center"
+                     data-hoffset="0"
+                     data-y="280"
+                     data-speed="1400"
+                     data-start="2000"
+                     data-easing="Power4.easeOut"
+                     data-endspeed="300"
+                     data-endeasing="Power1.easeIn"
+                     data-captionhidden="off"
+                     style="z-index: 6">
+                   Készleten
+                </div>
+                <!-- LAYER -->
+                <div class="tp-caption sft"
+                     data-x="center"
+                     data-hoffset="0"
+                     data-y="370"
+                     data-speed="1600"
+                     data-start="2800"
+                     data-easing="Power4.easeOut"
+                     data-endspeed="300"
+                     data-endeasing="Power1.easeIn"
+                     data-captionhidden="off"
+                     style="z-index: 6">
+                    <a href="#" class="btn btn-u btn-brd btn-brd-hover btn-u-light">Tovább</a>
+                    <a href="#" class="btn btn-u btn-brd btn-brd-hover btn-u-light">Megtekint</a>
+                </div>
+            </li>
+            <!-- END SLIDE -->
+            <!-- SLIDE -->
+            <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 5">
+                <!-- MAIN IMAGE -->
+                <img src="../img/hegeszt4.jpg" alt="darkblurbg" data-bgfit="cover" data-bgposition="right top" data-bgrepeat="no-repeat">
+                <div class="tp-caption revolution-ch5 sft start"
+                     data-x="right"
+                     data-hoffset="5"
+                     data-y="130"
+                     data-speed="1500"
+                     data-start="500"
+                     data-easing="Back.easeInOut"
+                     data-endeasing="Power1.easeIn"
+                     data-endspeed="300">
+                    <strong>Vágó és </strong> csiszoló anyagok
+                </div>
+                <!-- LAYER -->
+                <div class="tp-caption revolution-ch4 sft"
+                     data-x="right"
+                     data-hoffset="-14"
+                     data-y="210"
+                     data-speed="1400"
+                     data-start="2000"
+                     data-easing="Power4.easeOut"
+                     data-endspeed="300"
+                     data-endeasing="Power1.easeIn"
+                     data-captionhidden="off"
+                     style="z-index: 6">
+                    Kiváló minőség<br>
+                   Alacsony ár
+                </div>
+                <!-- LAYER -->
+                <div class="tp-caption sft"
+                     data-x="right"
+                     data-hoffset="0"
+                     data-y="300"
+                     data-speed="1600"
+                     data-start="2800"
+                     data-easing="Power4.easeOut"
+                     data-endspeed="300"
+                     data-endeasing="Power1.easeIn"
+                     data-captionhidden="off"
+                     style="z-index: 6">
+                    <a href="#" class="btn btn-u btn-brd btn-brd-hover btn-u-light">Megtekint</a>
+                </div>
+            </li>
+
+            <!-- END SLIDE -->
+        </ul>
+        <div class="tp-bannertimer tp-bottom"></div>
+    </div>
+</div>
+
+        <div data-ng-app="app-product">
+            <div ng-view></div>
+        </div>
+
+
+<!--=== End Product Content ===-->
+<!--=== Twitter-Block ===-->
+<div class="parallaxBg twitter-block margin-bottom-60">
+    <div class="container">
+        <div class="heading heading-v1 margin-bottom-20">
+            <h2>Kereskedelmi aranyköpések</h2>
+        </div>
+        <div id="carousel-example-generic-v5" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li class="active rounded-x" data-target="#carousel-example-generic-v5" data-slide-to="0"></li>
+                <li class="rounded-x" data-target="#carousel-example-generic-v5" data-slide-to="1"></li>
+                <li class="rounded-x" data-target="#carousel-example-generic-v5" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <p>Legjobb huzalok <a href="http://gold-cohuzal.hu/">http://gold-cohuzal.hu/</a><p>
+
+                        <ul class="list-inline twitter-icons">
+                            <li><a href="#"><i class="fa fa-reply"></i></a></li>
+                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                </div>
+                <div class="item">
+                    <p>Teljes katalógus</p>
+
+                    <ul class="list-inline twitter-icons">
+                        <li><a href="#"><i class="fa fa-reply"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <p>Legjobb korongok <a href="http://heinbo.hu/index.php/Vagokorong-csiszolokorong/most-speed-41-szenacelhoz.html"></a></p>
+
+                    <ul class="list-inline twitter-icons">
+                        <li><a href="#"><i class="fa fa-reply"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-arrow">
+                <a class="left carousel-control" href="#carousel-example-generic-v5" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic-v5" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--=== End Twitter-Block ===-->
+<div class="container">
+    <!--=== Product Service ===-->
+    <div class="row margin-bottom-60">
+    <style type="text/css">
+    a:hover {
+        text-decoration: none;
+    }
+    </style>
+        <div class="col-md-4 product-service md-margin-bottom-30">
+            <div class="product-service-heading">
+                <i class="fa fa-truck"></i>
+            </div>
+            <div class="product-service-in">
+                <h3>Ingyenes kiszállítás</h3>
+                <p>Ha rendelés meghaladja x ft-ot ingyenesen szállítást biztosítunk</p>
+                <a href="#">+További információk</a>
+            </div>
+        </div>
+        <div class="col-md-4 product-service md-margin-bottom-30">
+            <a asp-controller="App" asp-action="Contact">
+                <div class="product-service-heading">
+                    <i class="icon-earphones-alt"></i>
+                </div>
+            </a>            
+            <div class="product-service-in">
+                <h3>Kapcsolattartás</h3>
+                <p>Cégünk hétfőtől vasárnapig x-y óráig hívható a Z számon</p>
+                <a asp-controller="App" asp-action="Contact">Elérhetőségeink</a>
+            </div>
+        </div>
+        <div class="col-md-4 product-service">
+            <div class="product-service-heading">
+                <i class="icon-refresh"></i>
+            </div>
+            <div class="product-service-in">
+                <h3>Termékgarancia</h3>
+                <p>Amennyiben hibás terméket kapott, mi X napon belül kicseréljük... vagy nem :) </p>
+                <a href="#">+További információk</a>
+            </div>
+        </div>
+    </div><!--/end row-->
+    <!--=== End Product Service ===-->
+  
+</div><!--/end cotnainer-->
+
+<!--=== Sponsors ===-->
+<div class="container content">
+    <div class="heading heading-v1 margin-bottom-40">
+        <h2>Forgalmazzuk</h2>
+        <p>Cégünk kizárólagos Magyarországi képviselete az alábbi márkáknak:</p>
+    </div>
+    <ul class="list-inline owl-slider-v2">
+        <li class="item first-child">
+            <img src="../img/clients/heinbo_01.jpg" alt="">
+        </li>
+        <li class="item">
+            <img src="../img/clients/heinbo_03.jpg" alt="">
+        </li>
+        <li class="item">
+            <img src="../img/clients/heinbo_05.jpg" alt="">
+        </li>
+        <li class="item">
+            <img src="../img/clients/heinbo_05.jpg" alt="">
+        </li>
+        <li class="item">
+            <img src="../img/clients/heinbo_05.jpg" alt="">
+        </li>
+      
+    </ul><!--/end owl-carousel-->
+    </div>

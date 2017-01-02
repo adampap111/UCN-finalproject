@@ -1,0 +1,433 @@
+﻿
+
+<div ng-controller="shoppingCartController">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3>Rendelését rögzítettük!</h3>
+        </div>
+        <div >
+            <button class="btn btn-warning"  ng-click="cancel()">Ok</button>
+        </div>
+    </script>
+    <!--=== Breadcrumbs v4 ===-->
+    <div class="breadcrumbs-v4">
+        <div class="container">
+
+            <h1>Kosár <span class="shop-green"></span> </h1>
+            <ul class="breadcrumb-v4-in">
+                <li><a href="index.html">Home</a></li>
+
+                <li class="active" style="color:white">Kosár</li>
+            </ul>
+        </div><!--/end container-->
+    </div>
+    <!--=== End Breadcrumbs v4 ===-->
+    <!--=== Content Medium Part ===-->
+    <div class="content-md margin-bottom-30">
+        <style type="text/css">
+            /* Shopping cart styling */
+            div.cart-tab-header-row {
+                padding: 10px;
+                background-color: #fff;
+            }
+
+            div.cart-tab-header {
+                background-color: #4765A0;
+                height: 100px;
+                color: #fff;
+            }
+
+                div.cart-tab-header .tab-number {
+                    text-align: center;
+                    padding: 5px;
+                    padding-left: 20px;
+                }
+        </style>
+        <div class="container">
+            <form class="shopping-cart" action="#" name="updateUser" novalidate ng-submit="vm.updateUser()">
+                <div class="row cart-tab-header-row">
+                    <div class="col-md-4">
+                        <a href="" class="btn btn-block" ng-click="showFirstTab()">
+                            <div class="cart-tab-header" ng-style="{'background-color': firstHeaderColor}">
+                                <div class="col-xs-2 tab-number">
+                                    <h1 style="text-align: center;padding: 10px;color:#fff;">1.</h1>
+                                </div>
+                                <div class="col-xs-10">
+                                    <h3 style="color:#fff;padding:13px 10px 0 10px;text-align:left">Bevásárló kosár</h3>
+                                    <p style="color:#fff;padding:0 10px 13px 10px;text-align:left;">Áttekintés & módosítás</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="" class="btn btn-block" ng-click="showSecondTab()" data-ng-disabled="cartItems.length < 1">
+                            <div class="cart-tab-header" ng-style="{'background-color': secondHeaderColor}">
+                                <div class="col-xs-2 tab-number">
+                                    <h1 style="text-align: center;padding: 10px;color:#fff;">2.</h1>
+                                </div>
+                                <div class="col-xs-10">
+                                    <h3 style="color:#fff;padding:13px 10px 0 10px;text-align:left">Számla</h3>
+                                    <p style="color:#fff;padding:0 10px 13px 10px;text-align:left;">Számlázási és szállítási információk</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-block" style="margin:0" ng-click="showThirdTab()" ng-disabled="updateUser.$invalid">
+
+                            <div class="cart-tab-header" ng-style="{'background-color': thirdHeaderColor}">
+                                <div class="col-xs-2 tab-number">
+                                    <h1 style="text-align: center;padding: 10px;color:#fff;">3.</h1>
+                                </div>
+                                <div class="col-xs-10">
+                                    <h3 style="color:#fff;padding:13px 10px 0 10px;text-align:left">Megrendés</h3>
+                                    <p style="color:#fff;padding:0 10px 13px 10px;text-align:left;">Áttekintés és rendelés</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div ng-show="firstTabActive">
+                    <section>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Termék</th>
+                                        <th>Egységár</th>
+                                        <th>Mennyiség</th>
+                                        <th>Összesen</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="cartItem in cartItems" ng-init='calculateTotal($index)'>
+                                        <td class="product-in-table">
+                                            <img class="img-responsive" ng-src="../../img/blog/{{cartItem.product.productName}}.jpg" alt="">
+                                            <div class="product-it-in">
+                                                <h3>{{cartItem.product.productName}}</h3>
+                                                <span>{{cartItem.product.category}}</span>
+                                            </div>
+                                        </td>
+                                        <td>{{cartItem.product.price}} Ft</td>
+                                        <td>
+                                            <button type='button' class="quantity-button" name='subtract' ng-click="substract($index)" value='-'>-</button>
+                                            <input type="text" class="quantity-field" name='qty1' ng-model="cartItem.quantity" readonly />
+                                            <button type='button' class="quantity-button" name='add' ng-click="addition($index)" value='+'>+</button>
+                                        </td>
+                                        <td class="shop-red">{{cartItem.product.price * cartItem.quantity}} Ft</td>
+                                        <td>
+                                            <button type="button" ng-click="calculateTotalAfterRemove(cartItems.indexOf(cartItem))" class="close"><span>&times;</span><span class="sr-only">Close</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <th colspan="5" style="text-align:center">
+                                            <span ng-if="cartItems.length < 1" class="animate-if">
+                                                Nincs termék a kosárban.
+                                            </span>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    <div class="coupon-code">
+                        <div class="row">
+                            <div class="col-sm-4 sm-margin-bottom-30">
+                            </div>
+                            <div class="col-sm-3 col-sm-offset-5">
+                                <ul class="list-inline total-result">
+                                    <li>
+                                        <h4>Részösszeg:</h4>
+                                        <div class="total-result-in">
+                                            <span>{{total}} Ft</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h4>Szállítás:</h4>
+                                        <div class="total-result-in">
+                                            <span class="text-right">- - - -</span>
+                                        </div>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="total-price">
+                                        <h4>Végösszeg:</h4>
+                                        <div class="total-result-in">
+                                            <span>{{total}} Ft</span>
+                                        </div>
+                                    </li>
+                                    <li style="padding-top:15px;margin:0;text-transform:uppercase" class="pull-right">
+                                        <a class="btn btn-primary bg-color-dark-blue" style="width:100%;padding-left:30px;padding-right:30px;margin-right:5px" ng-click="showSecondTab()" data-ng-disabled="cartItems.length < 1">Tovább</a>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="secondTabActive">
+                    <section class="billing-info">
+
+                        <div class="row">
+                            <div class="col-md-6 md-margin-bottom-40">
+                                <div class="row">
+                                    <div class="col-md-6"><h2 class="title-type">Számlázási cím</h2></div>
+                                    <div class="col-md-6" style="padding-top:9px" ng-show="updateUser.$invalid">
+                                        <span class="label label-danger form-control">
+                                            Töltse ki a hiányzó adatokat.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="billing-info-inputs checkbox-list">
+                                    <div class="row">
+                                        <div role="alert" class="col-sm-6" ng-class="{ 'has-error' : (updateUser.uName.$invalid && !updateUser.uName.$pristine) || (updateUser.email.$invalid && !updateUser.email.$pristine) }">
+                                            <input type="text" placeholder="Keresztnév" ng-model="User.firstName" name="uName" class="form-control" required>
+                                            <input type="text" placeholder="Email" ng-model="User.email" name="email" class="form-control" required="required">
+
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <input type="text" placeholder="Vezetéknév" name="lastName" ng-model="User.lastName" class="form-control" required="required">
+                                            <input id="phone" type="tel" placeholder="Phone" name="phone" ng-model="User.phoneNumber" class="form-control" required="required">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <input id="billingAddress" type="text" placeholder="Utca" name="address1" ng-model="User.street" class="form-control" required">
+                                        <input type="number" name="streetNr" class="form-control" placeholder="h.sz." ng-model="User.streetNumber" required>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input id="city" type="text" placeholder="Város" name="city" ng-model="User.city" class="form-control required">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input id="zip" type="text" placeholder="Irányítószám" name="zip" ng-model="User.zip" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <label class="checkbox text-left">
+                                        <input type="checkbox" name="checkbox" ng-model="sameAddress" ng-change="sameAddress && copyUserInformations()" />
+                                        <i></i>
+                                        Számlázási és szállítási cím megegyezik
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6"><h2 class="title-type">Szállítási cím</h2></div>
+                                    <div class="col-md-6" style="padding-top:9px" ng-show="updateUser.$invalid">
+                                        <span class="label label-danger form-control">
+                                            Töltse ki a hiányzó adatokat.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="billing-info-inputs checkbox-list">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input id="name2" type="text" placeholder="Keresztnév" name="firstname" ng-model="UserShipping.firstName" ng-disabled="sameAddress" class="form-control">
+                                            <input id="email2" type="text" placeholder="Email" name="email" ng-model="UserShipping.email" ng-disabled="sameAddress" class="form-control email">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input id="surname2" type="text" placeholder="Vezetéknév" name="lastname" ng-model="UserShipping.lastName" ng-disabled="sameAddress" class="form-control">
+                                            <input id="phone2" type="tel" placeholder="Phone" name="phone" ng-model="UserShipping.phoneNumber" ng-disabled="sameAddress" class="form-control">
+                                        </div>
+                                    </div>
+                                    <input id="shippingAddress" type="text" placeholder="Utca" name="address1" ng-model="UserShipping.street" ng-disabled="sameAddress" class="form-control">
+                                    <input type="number" name="streetNr" class="form-control" placeholder="h.sz." ng-model="UserShipping.streetNumber" ng-disabled="sameAddress" required>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input id="city2" type="text" placeholder="Város" name="city" ng-model="UserShipping.city" ng-disabled="sameAddress" class="form-control">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input id="zip2" type="text" placeholder="Irányítószám" name="zip" ng-model="UserShipping.zip" ng-disabled="sameAddress" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="coupon-code">
+                        <div class="row">
+                            <div class="col-sm-4 sm-margin-bottom-30">
+                            </div>
+                            <div class="col-sm-3 col-sm-offset-5">
+                                <ul class="list-inline total-result">
+                                    <li>
+                                        <h4>Részösszeg:</h4>
+                                        <div class="total-result-in">
+                                            <span>{{total}} Ft</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h4>Szállítás:</h4>
+                                        <div class="total-result-in">
+                                            <span class="text-right">- - - -</span>
+                                        </div>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="total-price">
+                                        <h4>Végösszeg:</h4>
+                                        <div class="total-result-in">
+                                            <span>{{total}} Ft</span>
+                                        </div>
+                                    </li>
+                                    <li style="padding-top:15px;margin:0;text-transform:uppercase">
+                                        <a class="btn btn-primary bg-color-dark-blue" style="width:47%;margin-right:5px" ng-click="showFirstTab()">Vissza</a>
+                                        <a class="btn btn-primary bg-color-dark-blue" style="width:47%;margin-left:5px" ng-click="showThirdTab()" ng-disabled="updateUser.$invalid">Tovább</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="thirdTabActive">
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6 md-margin-bottom-50">
+                                <h2 class="title-type">Válasszon hogyan kívánja átvenni rendelését</h2>
+                                <!-- Accordion -->
+                                <div class="accordion-v2">
+                                    <div class="panel-group" id="accordion">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+                                                        <i class="fa fa-money"></i>
+                                                        Személyes átvétel
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse in">
+                                                <div class="panel-body cus-form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 no-col-space control-label">Szolnoki címünk</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control required" name="cardholder" value="5081 Szajol, Arany János út 5/D" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 no-col-space control-label">Hódmezővásárhelyi címünk</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control required" name="cardnumber" value="6800 Hódmezővásárhely, Mester u. 21" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo">
+                                                        <i class="fa fa-credit-card"></i>
+                                                        Átutalás
+
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo" class="panel-collapse collapse">
+                                                <div class="content margin-left-10">
+                                                    <h2>
+                                                        Emailben értesítjük
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Accordion -->
+                            </div>
+                            <div class="col-md-6">
+                                <h2 class="title-type">Gyakran ismételt kérdések</h2>
+                                <!-- Accordion -->
+                                <div class="accordion-v2 plus-toggle">
+                                    <div class="panel-group" id="accordion-v2">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion-v2" data-target="#collapseOne-v2">
+                                                        Hogyan fizethetek?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne-v2" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    Jelenleg csak átutalással, vagy személyes átvételkor fizethet.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" class="collapsed" data-parent="#accordion-v2" data-target="#collapseTwo-v2">
+                                                        Mennyi időn belül kapom készhez a rendelt termékeket?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo-v2" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    Cégünk az XY csomagküldő szolgálattal áll partnerszerződésben, így ön 48órán belül megkapja a rendelését.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" class="collapsed" data-parent="#accordion-v2" data-target="#collapseFour-v2">
+                                                        Mi történik ha a termék hibásan vagy hiányosan érkezik meg?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseFour-v2" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    Küldje vissza az eredeti csomagolásában és megtérítjük a vételárat, vagy kicseréljük.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Accordion -->
+                            </div>
+                        </div>
+                    </section>
+                    <div class="coupon-code">
+                        <div class="row">
+                            <div class="col-sm-4 sm-margin-bottom-30">
+                            </div>
+                            <div class="col-sm-3 col-sm-offset-5">
+                                <ul class="list-inline total-result">
+                                    <li>
+                                        <h4>Részösszeg:</h4>
+                                        <div class="total-result-in">
+                                            <span>{{total}} Ft</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h4>Szállítás:</h4>
+                                        <div class="total-result-in">
+                                            <span class="text-right">- - - -</span>
+                                        </div>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="total-price">
+                                        <h4>Végösszeg:</h4>
+                                        <div class="total-result-in">
+                                            <span>{{total}} Ft</span>
+                                        </div>
+                                    </li>
+                                    <li style="padding-top:15px;margin:0;text-transform:uppercase">
+                                        <a class="btn btn-primary bg-color-dark-blue" style="width:47%;margin-right:5px" ng-click="showSecondTab()">Vissza</a>
+                                        <a class="btn btn-primary bg-color-dark-blue" style="width:47%;margin-left:5px" ng-click="vm.sendOrder(); open()">Megerősít</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewBag.Title = "ShoppingCart";
+}
+@section Scripts {
+    <script type="text/javascript" src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-route/angular-route.min.js"></script>
+    <script src="~/js/app-shoppingCart.js"></script>
+    <script src="~/js/shoppingCartController.js"></script>
+<script src="~/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+  
+
+}
+
+<div class="wrapper">
+    <div data-ng-app="app-shoppingCart">
+        <div ng-view></div>
+    </div>
+</div>
