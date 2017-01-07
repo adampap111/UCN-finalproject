@@ -9,9 +9,14 @@
 @section Scripts {
     <script type="text/javascript" src="~/lib/angular/angular.min.js"></script>
     <script type="text/javascript" src="~/lib/angular-route/angular-route.min.js"></script>
-    <script type="text/javascript" src="~/js/app-profilePage.js"></script>
-    <script type="text/javascript" src="~/js/profilePageController.js"></script>
-
+    <environment names="Production">
+        <script type="text/javascript" src="~/lib/_app/app-profilePage.js"></script>
+        <script type="text/javascript" src="~/lib/_app/profilePageController.js"></script>
+    </environment>
+    <environment names="Development">
+        <script type="text/javascript" src="~/js/app-profilePage.js"></script>
+        <script type="text/javascript" src="~/js/profilePageController.js"></script>
+    </environment>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <!-- CSS Page Style -->
