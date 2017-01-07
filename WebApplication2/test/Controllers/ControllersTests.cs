@@ -39,7 +39,7 @@ namespace test
             var result = controller.Get();
 
             // Assert
-            Assert.IsType<OkObjectResult>(result);
+           Assert.Equal(product, Assert.IsType<OkObjectResult>(result).Value);
 
         }
 
@@ -47,21 +47,18 @@ namespace test
         public void GetProductsByName()
         {
             // Arrange
-            var product = new List<Product>
-            {
-               Product.Create(12,"szar","fos"),
-               Product.Create(122,"szddar","fddos"),
-                            };
+            var product = new Product(12, "szar", "fos");
+           
             var mockRepo = new Mock<ISalesRepository>();
             mockRepo.Setup(repo => repo.GetProductByName("szar"))
-                .Returns((Product)product);
+                .Returns(product);
             var controller = new ProductController(mockRepo.Object, null);
 
             // Act
-      //      var result = controller.GetProductsByCategory();
+            var result = controller.Get("szar");
 
             // Assert
-       //     Assert.IsType<OkObjectResult>(result);
+            Assert.IsType<OkObjectResult>(result);
 
         }
 

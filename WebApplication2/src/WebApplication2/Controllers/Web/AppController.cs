@@ -38,6 +38,10 @@ namespace Heinbo.Controllers.Web
         {
             return View();
         }
+        public IActionResult Error()
+        {
+            return View();
+        }
 
         public IActionResult CartBadge()
         {

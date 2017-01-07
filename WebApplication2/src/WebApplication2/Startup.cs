@@ -48,14 +48,14 @@ namespace WebApplication2
             // Add framework services.
             services.AddApplicationInsightsTelemetry(_config);
             services.AddSingleton(_config);
-           
             services.AddDbContext<SalesContext>();
             services.RegisterServices();
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
+            ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(_config.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -64,9 +64,7 @@ namespace WebApplication2
                 config.CreateMap<UserViewModel, User>().ReverseMap();
                 config.CreateMap<ProductViewModel, Product>().ReverseMap();
                 config.CreateMap<ProfileViewModel, User>().ReverseMap();
-            }
-          );
-
+            });
             app.UseApplicationInsightsRequestTelemetry();
 
             if (env.IsDevelopment())
@@ -76,11 +74,9 @@ namespace WebApplication2
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/App/Error");
             }
-
             app.UseApplicationInsightsExceptionTelemetry();
-
             app.UseStaticFiles();
             app.UseIdentity();
             app.UseMvc(routes =>
