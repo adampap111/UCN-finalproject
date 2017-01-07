@@ -20,11 +20,20 @@ namespace Heinbo.Models
         public string Description { get; set; }
         public string Size { get; set; }
         public string Brand { get; set; }
+        public Product(int productID, string productName, string category)
+        {
+            ProductID = productID;
+            ProductName = productName;
+            Category = category;   
+        }
         public Product()
         {
-            
+
         }
-      
+        public static Product Create(int productID, string productName, string category)
+        {
+            return new Product(productID, productName, category);
+        }
 
     }
 

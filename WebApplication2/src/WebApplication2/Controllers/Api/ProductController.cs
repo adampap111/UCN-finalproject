@@ -7,6 +7,7 @@ using System.Net;
 using Heinbo.Models;
 using Heinbo.Services;
 
+
 namespace Heinbo.Controllers.Api
 {
     [Route("api/")]
@@ -24,10 +25,11 @@ namespace Heinbo.Controllers.Api
         [HttpGet("")]
         public IActionResult Get()
         {
+          
             try
             {
                 var product = _repository.GetAllProducts();
-                return Ok(Mapper.Map<IEnumerable<Product>>(product));
+                return Ok((product));
             }
             catch (Exception ex)
             {
@@ -57,7 +59,7 @@ namespace Heinbo.Controllers.Api
             try
             {
                 var product = _repository.GetProductByName(productName);
-                return Ok(Mapper.Map<Product>(product));
+                return Ok((product));
             }
             catch (Exception ex)
             {

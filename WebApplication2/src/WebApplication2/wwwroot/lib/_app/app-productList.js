@@ -1,0 +1,1 @@
+!function(){"use strict";angular.module("app-productList",["ngRoute"]).config(["$routeProvider","$locationProvider",function(o,t){o.when("/",{controller:"productListController",controllerAs:"vm",templateUrl:"/views/productList.html"}),o.otherwise({redirectTo:"/"})}])}();

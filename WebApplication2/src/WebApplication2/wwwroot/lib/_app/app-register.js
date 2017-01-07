@@ -1,0 +1,1 @@
+!function(){"use strict";angular.module("app-register",["ngRoute"]).config(["$routeProvider",function(e){e.when("/",{controller:"registerController",controllerAs:"vm",templateUrl:"/views/register.html"}),e.otherwise({redirectTo:"/"})}])}();

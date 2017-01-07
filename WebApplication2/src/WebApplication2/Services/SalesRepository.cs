@@ -49,7 +49,7 @@ namespace Heinbo.Services
 
         public IEnumerable<Product> GetAllProducts()
         {
-         //   _logger.LogInformation("Getting all trips from the database");
+       
             return _context.Product.ToList();
         }
 

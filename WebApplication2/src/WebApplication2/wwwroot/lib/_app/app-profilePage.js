@@ -1,0 +1,1 @@
+!function(){"use strict";angular.module("app-profilePage",["ngRoute"]).config(["$routeProvider","$locationProvider",function(e,o){e.when("/",{controller:"profilePageController",controllerAs:"vm",templateUrl:"/views/profilePage.html"}),e.otherwise({redirectTo:"/"})}])}();
