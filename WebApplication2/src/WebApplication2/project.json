@@ -63,7 +63,7 @@
     "win10-x64": {},
     "win8-x64": {},
     "win8-x86": {},
-     "win7-x86": {}
+    "win10-x86": {}
   },
 
   "runtimeOptions": {
