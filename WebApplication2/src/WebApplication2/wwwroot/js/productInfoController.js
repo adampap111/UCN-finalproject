@@ -28,7 +28,7 @@
               angular.copy(response.data, $scope.responseData);
 
           }, function (error) {
-              vm.errorMessage = "Failed to load stops";
+              vm.errorMessage = "Failed to load product";
           })
           .finally(function () {
               vm.isBusy = false;

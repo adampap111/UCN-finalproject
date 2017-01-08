@@ -3,7 +3,7 @@
     angular.module("app-register")
     .controller("registerController", registerController);
 
-    function registerController($http,$window) {
+    function registerController($http, $window) {
         var vm = this;
 
         vm.newUser = {};
@@ -28,18 +28,6 @@
             });
         };
 
-        //var login = function () {
-        //    $http.post("/Auth/Login", vm.newUser)
-        //        .then(function (response) {
-        //            //success
-        //            $window.location.href = "/";
-        //    }, function (error) {
-        //        //failure
-        //        vm.errorMessage = "Failed to login" + error;
-        //    }).finally(function () {
-        //        vm.isBusy = false;
-        //    });
-        //};
     }
 
 })(window, window.angular);

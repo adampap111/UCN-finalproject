@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Net;
-using Heinbo.Models;
 using Heinbo.Services;
 
 
@@ -33,7 +30,7 @@ namespace Heinbo.Controllers.Api
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get Trips {ex}");
+                _logger.LogError($"Failed to get Products {ex}");
                 return BadRequest("Error occured");
             }
         }
@@ -63,7 +60,7 @@ namespace Heinbo.Controllers.Api
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get Trips {ex}");
+                _logger.LogError($"Failed to get products {ex}");
                 return BadRequest("Error occured");
             }
         }

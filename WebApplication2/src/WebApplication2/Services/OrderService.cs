@@ -52,7 +52,7 @@ namespace Heinbo.Services
             string orderItems = "";
             foreach (OrderItem o in order.OrderItems)
             {
-                orderItems +="Termék: " + o.Product.ProductName + "  Mennyiség" + (o.Quantity.ToString()) + " darab  Egységár:" + (o.Product.Price * o.Quantity).ToString() + " Ft \n\n";
+                orderItems +="Termék: " + o.Product.ProductName + "  Mennyiség " + (o.Quantity.ToString()) + " darab  Egységár:  " + (o.Product.Price * o.Quantity).ToString() + " Ft \n\n";
             }
             string message = "Köszönjük, hogy nálunk vásárolt!" + "\n\n\n" + orderItems + "\n" + "Teljes összeg:  " + order.TotalPrice.ToString() + " Ft" + " \n\n Utalja a végösszeget a 4352-4326-2525 bankszámlaszámra  \n Üdvözlettel: Heinbo Kft.";
 

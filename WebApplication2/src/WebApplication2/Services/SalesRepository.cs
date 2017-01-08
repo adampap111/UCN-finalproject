@@ -21,7 +21,8 @@ namespace Heinbo.Services
         private User _currentUser;
         private HttpContext _httpContext;
 
-        public SalesRepository(SalesContext context, IHttpContextAccessor contextAccessor, ILogger<SalesRepository> logger, UserManager<User> userManager)
+        public SalesRepository(SalesContext context, IHttpContextAccessor contextAccessor,
+            ILogger<SalesRepository> logger, UserManager<User> userManager)
         {
             _context = context;
             _logger = logger;
@@ -88,7 +89,7 @@ namespace Heinbo.Services
                 UserName = dummyEmail
             };
             var abc = await _userManager.CreateAsync(_currentUser, "1qazZAQ!");
-            //   await _userManager.AddToRoleAsync(_currentUser, "guest");
+          
 
             return _currentUser;
         }

@@ -1,9 +1,9 @@
 ﻿
 <body>
     <!--=== Content Part ===-->
-     <div class="container">
+    <div class="container">
         <!--Reg Block-->
-        <div class="reg-block"  style="border-color:#4765A0">
+        <div class="reg-block" style="border-color:#4765A0">
             <form novalidate name="newUser" ng-submit="vm.addUser()">
                 <div class="reg-block-header">
                     <h2>Regisztráció</h2>
@@ -15,15 +15,14 @@
                     </ul>
                     <p>Már regisztrált? <a class="color-green" href="">Bejeletkezés</a> itt.</p>
                 </div>
-               
+
                 <div>
                     <span ng-show="newUser.Email.$error.required" class="text-warning">Email cím kötelező.</span>
                     <span ng-show="newUser.Email.$invalid && !newUser.Email.$pristine" a class="text-warning">Hibás email cím.</span>
                 </div>
-                <div class="input-group margin-bottom-20" ng-class="{ 'has-error' : newUser.Email.$invalid && !newUser.Email.$pristine }">
+                <div class="input-group margin-bottom-20" ng-class="{'has-error' : newUser.Email.$invalid && !newUser.Email.$pristine}">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                     <input type="email" name="Email" class="form-control" placeholder="Email" ng-model="vm.newUser.Email" required>
-
                 </div>
 
                 <div>
@@ -35,24 +34,24 @@
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                     <input type="password" name="Password" class="form-control" placeholder="Password" ng-model="vm.newUser.Password" required ng-minlength="4">
                 </div>
-                              
+
                 <div ng-show="(newUser.Password.$viewValue) != (newUser.Cpassword.$viewValue)" class="text-warning">
                     Nem egyezik a jelszó!
                 </div>
                 <div class="input-group margin-bottom-30" ng-class="{ 'has-error' : newUser.Cpassword.$invalid && !newUser.Cpassword.$pristine }">
                     <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                    <input type="password"  name="Cpassword" class="form-control" placeholder="Confirm Password" ng-model="vm.newUser.Cpassword" required ng-minlength="4">
+                    <input type="password" name="Cpassword" class="form-control" placeholder="Confirm Password" ng-model="vm.newUser.Cpassword" required ng-minlength="4">
                 </div>
                 <hr>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="vm.newUser.CheckBox"  required>
+                        <input type="checkbox" ng-model="vm.newUser.CheckBox" required>
                         Elfogadom a <a target="_blank" href="page_terms.html">feltételeket</a>
                     </label>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
-                        <button type="submit" class="btn btn-u btn-block bg-color-dark-blue"  ng-disabled="newUser.$invalid  || (newUser.Password.$viewValue) != (newUser.Cpassword.$viewValue)">Register</button>
+                        <button type="submit" class="btn btn-u btn-block bg-color-dark-blue" ng-disabled="newUser.$invalid  || (newUser.Password.$viewValue) != (newUser.Cpassword.$viewValue)">Register</button>
                     </div>
 
                 </div>
